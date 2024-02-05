@@ -2,19 +2,20 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/css2.css">
+    <link rel="stylesheet" href="map.css">
 </head>
 
 <body>
     <h2>Find your local hairdresser</h2>
     <!--The div element for the map -->
-    <div id="map"></div>
-
-
+    <div id="map-container">
+        <!-- The div element for the map -->
+        <div id="map"></div>
+    </div>
 
     <!-- Scripts-->
     <!--API-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzvSxXGQ-IAD2Vqze2ewXCX8zVH0dqsIY&callback=initMap&libraries=&v=weekly" async></script>
+    
 
     <script>
         //map
@@ -66,6 +67,9 @@
                 markers.push(marker);
             });
 
+          
+            
+
             // Event listener for map zoom change
             google.maps.event.addListener(map, 'zoom_changed', function() {
                 // Update the radius of each marker based on the current zoom level
@@ -74,9 +78,7 @@
                 });
             });
 
-            const markerCluster = new MarkerClusterer(map, markers, {
-                imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
-            })
+            
         }
 
         // Function to calculate the radius of the circle based on the zoom level
@@ -84,9 +86,13 @@
             // Adjust the multiplier as needed to control the rate of growth
             return Math.pow(2, 19 - zoomLevel) * 2;
         }
+
+        
     </script>
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
-    </script>
+<!--API & JS --->
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzvSxXGQ-IAD2Vqze2ewXCX8zVH0dqsIY&callback=initMap&libraries=&v=weekly" async></script>
+<script src="hairdresser.js"></script>
+
 </body>
 
 </html>
