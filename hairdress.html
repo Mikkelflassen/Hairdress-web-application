@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/css2.css">
+</head>
+
+<body>
+    <h2>Find your local hairdresser</h2>
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+
+
+    <!-- Scripts-->
+    <!--API-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzvSxXGQ-IAD2Vqze2ewXCX8zVH0dqsIY&callback=initMap&libraries=&v=weekly" async></script>
+
+    <script>
+        //map
+        function initMap() {
+
+            // Århus centrum
+            const gfg_office = {
+                lat: 56.159395,
+                lng: 10.209922
+            };
+
+            // Create the map, centered at gfg_office
+            const map = new google.maps.Map(
+                document.getElementById("map"), {
+
+                    // zoom of the map
+                    zoom: 14.56,
+                    center: gfg_office,
+                });
+
+            const hairdressers = [       /* cordinater*/    /* cordinater*/
+                { name: "Hairdresser A", lat: 56.159395, lng: 10.209922, available: true },
+                { name: "Hairdresser B", lat: 56.159955, lng: 10.209942, available: false },
+                { name: "Hairdresser c", lat: 56.158915, lng: 10.209322, available: false },
+                { name: "Hairdresser d", lat: 56.158425, lng: 10.206292, available: true },
+                { name: "Hairdresser A", lat: 56.158395, lng: 10.209922, available: true },
+                { name: "Hairdresser B", lat: 56.159955, lng: 10.209942, available: false },
+                { name: "Hairdresser c", lat: 56.158915, lng: 10.209322, available: false },
+                { name: "Hairdresser d", lat: 56.158425, lng: 10.206292, available: true },
+                // Add more hairdressers
+            ];
+
+            const markers = [];
+
+            // Markers for each hairdresser
+        hairdressers.forEach(hairdresser => {
+        // Create a circle marker for the hairdresser
+         const marker = new google.maps.Circle({
+        // Customize the appearance of the circle marker
+        strokeColor: 'transparent', // No border color
+        strokeOpacity: 20, // No border opacity
+        strokeWeight: 2, // No border thickness
+        fillColor: hairdresser.available ? 'green' : 'orange', // Set fill color based on availability
+        fillOpacity: 0.75, // Set fill opacity
+        map: map, // Attach the marker to the map
+        center: { lat: hairdresser.lat, lng: hairdresser.lng }, // Set the position of the marker
+        radius: calculateRadius(map.getZoom()) // Adjust the radius based on the current zoom level
+                });
+                markers.push(marker);
+            });
+
+            // Event listener for map zoom change
+            google.maps.event.addListener(map, 'zoom_changed', function() {
+                // Update the radius of each marker based on the current zoom level
+                markers.forEach(marker => {
+                    marker.setRadius(calculateRadius(map.getZoom()));
+                });
+            });
+
+            const markerCluster = new MarkerClusterer(map, markers, {
+                imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
+            })
+        }
+
+        // Function to calculate the radius of the circle based on the zoom level
+        function calculateRadius(zoomLevel) {
+            // Adjust the multiplier as needed to control the rate of growth
+            return Math.pow(2, 19 - zoomLevel) * 2;
+        }
+    </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+</body>
+
+</html>
