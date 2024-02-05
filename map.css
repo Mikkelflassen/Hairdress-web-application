@@ -1,0 +1,9 @@
+body{
+    background-color: #ffdede;
+}
+
+
+#map {
+    height: 300px; /* Adjust height as needed */
+    width: 40%;   /* Adjust width as needed */
+  }
