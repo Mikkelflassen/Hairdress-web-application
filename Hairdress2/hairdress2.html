@@ -5,14 +5,79 @@
 
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <script type="module" src="./index.js"></script>
+    
   </head>
   <body>
-    <h3>My Google Maps Demo</h3>
+    <div class="header">
+      <h1>Find your next haircut</h1>
+    </div>
     <!--The div element for the map -->
     <div class="map-container">
       <div id="map"></div>
+      <div class="hairdresser-info-container">
+        <div id="hairdresser-info1" class="hairdresser-info show-info">
+          <h2>Barber Shop by Kim</h2>
+          <p>Address: 123 Main Street</p>
+          <p>Phone: 555-1234</p>
+          <p>Hours: Monday-Saturday 9am-6pm</p>
+          <div class="booking-container">
+            <h3>Booking Times</h3>
+            <div class="booking-grid" id="booking-slots1">
+              <!-- Time slots will be added here -->
+              <button class="time-slot-available" data-time="9:00">9:00</button>
+  <button class="time-slot-available" data-time="9:30">9:30</button>
+  <button class="time-slot-available" data-time="10:00">10:00</button>
+  <button class="time-slot-not-available" data-time="10:30">10:30</button>
+  <button class="time-slot-available" data-time="11:00">11:00</button>
+  <button class="time-slot-available" data-time="11:30">11:30</button>
+  <button class="time-slot-not-available" data-time="12:00">12:00</button>
+  <button class="time-slot-available" data-time="12:30">12:30</button>
+  <button class="time-slot-not-available" data-time="13:00">13:00</button>
+  <button class="time-slot-available" data-time="13:30">13:30</button>
+  <button class="time-slot-not-available" data-time="14:00">14:00</button>
+  <button class="time-slot-available" data-time="14:30">14:30</button>
+  <button class="time-slot-available" data-time="15:00">15:00</button>
+  <button class="time-slot-available" data-time="15:30">15:30</button>
+  <button class="time-slot-not-available" data-time="16:00">16:00</button>
+  <button class="time-slot-available" data-time="16:30">16:30</button>
+  <button class="time-slot-available" data-time="17:00">17:00</button>
+  <button class="time-slot-not-available" data-time="17:30">17:30</button>
+  <button class="time-slot-available" data-time="18:00">18:00</button>
+
+            
+              <!-- Add more time slots as needed -->
+            </div>
+          </div>
+        </div>
+    
+        <div id="hairdresser-info2" class="hairdresser-info">
+          <h2>Hair by Jasmin</h2>
+          <p>Address: 456 Elm Avenue</p>
+          <p>Phone: 555-5678</p>
+          <p>Hours: Tuesday-Sunday 10am-7pm</p>
+        </div>
+        <div id="hairdresser-info3" class="hairdresser-info">
+          <h2>Beauty and Beers</h2>
+          <p>Address: 789 Oak Boulevard</p>
+          <p>Phone: 555-91011</p>
+          <p>Hours: Wednesday-Monday 11am-8pm</p>
+        </div>
+        <div id="hairdresser-info4" class="hairdresser-info">
+          <h2>beauty by corner</h2>
+          <p>Address: 789 Oak Boulevard</p>
+          <p>Phone: 555-91011</p>
+          <p>Hours: Wednesday-Monday 11am-8pm</p>
+        </div>
+        <div id="hairdresser-info5" class="hairdresser-info">
+          <h2>Sonny's barber shop</h2>
+          <p>Address: 789 Oak Boulevard</p>
+          <p>Phone: 555-91011</p>
+          <p>Hours: Wednesday-Monday 11am-8pm</p>
+        </div>
+      </div>
     </div>
     
+
     <!-- prettier-ignore -->
     <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
         ({key: "AIzaSyBzvSxXGQ-IAD2Vqze2ewXCX8zVH0dqsIY", v: "weekly"});</script>

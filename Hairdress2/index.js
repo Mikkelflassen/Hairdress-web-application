@@ -2,23 +2,25 @@
 let map;
 
 async function initMap() {
-    // The location of Uluru
+    // The location of of the barber shops
     const position1 = { lat: 56.159395, lng: 10.209922 };
     const position2 = { lat: 56.159955, lng: 10.209942 };
     const position3 = { lat: 56.158915, lng: 10.209322 };
+    const position4 = { lat: 56.158595, lng: 10.206012 };
+    const position5 = { lat: 56.158215, lng: 10.209992 }; // to add new ones, make sure to change the (position-number) and cordinates- only change the last 3-4 digit to keep it in aarhus
 
-    // Request needed libraries.
+    // Libraries request
     const { Map } = await google.maps.importLibrary("maps");
-    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+    // maybe this will be needed - const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-    // The map, centered at Uluru
+    // The map, centered in Aarhus
     map = new Map(document.getElementById("map"), {
-        zoom: 14,
+        zoom: 15,
         center: position1,
         mapId: "DEMO_MAP_ID",
     });
 
-   // Create marker icons with custom colors
+   // Custom colors
 const greenIcon = {
     url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
   };
@@ -29,38 +31,65 @@ const greenIcon = {
     url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png",
   };
   
-  // Create markers at different positions with custom icons
+  // Create more icons
   const marker1 = new google.maps.Marker({
     position: position1,
     map: map,
-    title: "Marker 1",
+    title: "Hairdresser 1",
     icon: greenIcon,
   });
   const marker2 = new google.maps.Marker({
     position: position2,
     map: map,
-    title: "Marker 2",
+    title: "Hairdresser 2",
     icon: redIcon,
   });
   const marker3 = new google.maps.Marker({
     position: position3,
     map: map,
-    title: "Marker 3",
+    title: "Hairdresser 3",
     icon: yellowIcon,
   });
+  const marker4 = new google.maps.Marker({ 
+    position: position4,
+    map: map,
+    title: "Hairdresser 4",
+    icon: greenIcon,
+  });
+  // copy paste this to add more hairdressers
+  
+  const marker5 = new google.maps.Marker({ 
+    position: position5, // change the number here 
+    map: map,
+    title: "Hairdresser 5", //remeber to change the number
+    icon: greenIcon, //change this depending on the availability of the shop
+  });
+  // add here and change the number and the titel
 
     // Add click event listener to the markers
     google.maps.event.addListener(marker1, 'click', () => handleMarkerClick(marker1));
     google.maps.event.addListener(marker2, 'click', () => handleMarkerClick(marker2));
     google.maps.event.addListener(marker3, 'click', () => handleMarkerClick(marker3));
+    google.maps.event.addListener(marker4, 'click', () => handleMarkerClick(marker4));
+    google.maps.event.addListener(marker5, 'click', () => handleMarkerClick(marker5)); // to add more copy-paste and change the markerNumber
 }
 
 // Function to handle marker click event
 function handleMarkerClick(marker) {
     console.log("Marker clicked:", marker.title);
+    
+    // Hide all hairdresser info containers
+    const allHairdresserInfo = document.querySelectorAll(".hairdresser-info");
+    allHairdresserInfo.forEach(info => {
+        info.style.display = "none";
+    });
+    
+    // Get the hairdresser info container corresponding to the clicked marker
+    const hairdresserInfo = document.getElementById(`hairdresser-info${marker.title.split(" ")[1]}`);
+    
+    // Display the hairdresser info container
+    hairdresserInfo.style.display = "block";
 }
 
-
 initMap();
-
 
