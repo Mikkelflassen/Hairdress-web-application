@@ -88,6 +88,7 @@ const greenIcon = {
       slot.addEventListener('click', () => {
           const time = slot.getAttribute('data-time');
           console.log(`Time slot clicked: ${time}`);
+          alert(`Time slot ${time} has been booked.`);
           // Change the status of the time slot to not-available
           slot.classList.remove('time-slot-available');
           slot.classList.add('time-slot-not-available');
