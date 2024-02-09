@@ -7,8 +7,10 @@ async function initMap() {
     const position2 = { lat: 56.159955, lng: 10.209942 };
     const position3 = { lat: 56.158915, lng: 10.209322 };
     const position4 = { lat: 56.158595, lng: 10.206012 };
-    const position5 = { lat: 56.158215, lng: 10.209992 }; 
-    const position6 = { lat: 56.157515, lng: 10.208992 };// to add new ones, make sure to change the (position-number) and cordinates- only change the last 3-4 digit to keep it in aarhus
+    const position5 = { lat: 56.158315, lng: 10.209992 }; 
+    const position6 = { lat: 56.157515, lng: 10.208992 };
+    const position7 = { lat: 56.158515, lng: 10.209892 };
+    const position8 = { lat: 56.157815, lng: 10.208792 };  // to add new ones, make sure to change the (position-number) and cordinates- only change the last 3-4 digit to keep it in aarhus
 
     // Libraries request
     const { Map } = await google.maps.importLibrary("maps");
@@ -72,6 +74,18 @@ const greenIcon = {
     title: "Hairdresser 6", //remeber to change the number
     icon: redIcon, //change this depending on the availability of the shop
   });
+const marker7 = new google.maps.Marker({
+  position: position7,
+  map: map,
+  title: "Hairdresser 7",
+  icon: redIcon,
+});
+const marker8 = new google.maps.Marker({
+  position: position8,
+  map: map,
+  title: "Hairdresser 8",
+  icon: greenIcon,
+});
   // add here and change the number and the titel
 
     // Add click event listener to the markers
@@ -80,7 +94,9 @@ const greenIcon = {
     google.maps.event.addListener(marker3, 'click', () => handleMarkerClick(marker3));
     google.maps.event.addListener(marker4, 'click', () => handleMarkerClick(marker4));
     google.maps.event.addListener(marker5, 'click', () => handleMarkerClick(marker5));
-    google.maps.event.addListener(marker6, 'click', () => handleMarkerClick(marker6)); // to add more copy-paste and change the markerNumber
+    google.maps.event.addListener(marker6, 'click', () => handleMarkerClick(marker6));
+    google.maps.event.addListener(marker7, 'click', () => handleMarkerClick(marker7));
+    google.maps.event.addListener(marker8, 'click', () => handleMarkerClick(marker8)); // to add more copy-paste and change the markerNumber
 }
 
     // Add click event listeners to time slots
