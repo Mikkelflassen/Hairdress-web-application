@@ -14,16 +14,18 @@
     <!--The div element for the map -->
     <div class="map-container">
       <div id="map"></div>
+      <!-- 1. haridresser -->
       <div class="hairdresser-info-container">
         <div id="hairdresser-info1" class="hairdresser-info show-info">
           <h2>Barber Shop by Kim</h2>
           <p>Address: 123 Main Street</p>
           <p>Phone: 555-1234</p>
+          <p> <!-- Description of the barber --> </p>
           <p>Hours: Monday-Saturday 9am-6pm</p>
+          <!-- copy-->
           <div class="booking-container">
             <h3>Book a time</h3>
             <div class="booking-grid" id="booking-slots1">
-              <!-- Time slots will be added here -->
               <button class="time-slot-available" data-time="9:00">9:00</button>
   <button class="time-slot-available" data-time="9:30">9:30</button>
   <button class="time-slot-available" data-time="10:00">10:00</button>
@@ -43,11 +45,10 @@
   <button class="time-slot-available" data-time="17:00">17:00</button>
   <button class="time-slot-not-available" data-time="17:30">17:30</button>
   <button class="time-slot-available" data-time="18:00">18:00</button>
-
-            
-              <!-- Add more time slots as needed -->
+              
             </div>
           </div>
+          <!-- End  -->
         </div>
     
         <div id="hairdresser-info2" class="hairdresser-info">
@@ -78,8 +79,65 @@
     </div>
     
 
-    <!-- prettier-ignore -->
-    <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
-        ({key: "AIzaSyBzvSxXGQ-IAD2Vqze2ewXCX8zVH0dqsIY", v: "weekly"});</script>
+    <!-- ignore -->
+    <script>
+      // Initialize and load Google Maps API
+      (g => {
+          // Initialization variables
+          var h, a, k, p = "The Google Maps JavaScript API",
+              c = "google",
+              l = "importLibrary",
+              q = "__ib__",
+              m = document,
+              b = window;
+
+          // Ensure google object exists
+          b = b[c] || (b[c] = {});
+          // Ensure maps object exists
+          var d = b.maps || (b.maps = {});
+          // Set to track imported libraries
+          var r = new Set();
+
+          // Function to load Google Maps API asynchronously
+          var u = () => {
+              if (!h) {
+                  // Create a promise to load the API
+                  h = new Promise(async (resolve, reject) => {
+                      await (a = m.createElement("script"));
+                      // Construct URL parameters
+                      var e = new URLSearchParams();
+                      e.set("libraries", [...r] + "");
+                      for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]);
+                      e.set("callback", c + ".maps." + q);
+                      // Set script source with parameters
+                      a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+                      d[q] = resolve;
+                      // Handle script loading error
+                      a.onerror = () => reject(Error(p + " could not load."));
+                      // Append script to head
+                      a.nonce = m.querySelector("script[nonce]")?.nonce || "";
+                      m.head.append(a);
+                  });
+              }
+              return h;
+          };
+
+          // Check if importLibrary function already exists
+          if (d[l]) {
+              console.warn(p + " only loads once. Ignoring:", g);
+          } else {
+              // Set importLibrary function to load libraries
+              d[l] = (library, ...params) => {
+                  // Add library to the set of imported libraries
+                  r.add(library);
+                  // Load the API if not already loaded
+                  return u().then(() => d[l](library, ...params));
+              };
+          }
+      })({
+          key: "AIzaSyBzvSxXGQ-IAD2Vqze2ewXCX8zVH0dqsIY",
+          v: "weekly"
+      });
+  </script>
   </body>
 </html>

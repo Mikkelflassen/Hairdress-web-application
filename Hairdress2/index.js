@@ -74,21 +74,35 @@ const greenIcon = {
     google.maps.event.addListener(marker5, 'click', () => handleMarkerClick(marker5)); // to add more copy-paste and change the markerNumber
 }
 
+    // Add click event listeners to time slots
+    document.querySelectorAll('.time-slot-available').forEach(slot => {
+      slot.addEventListener('click', () => {
+          const time = slot.getAttribute('data-time');
+          console.log(`Time slot clicked: ${time}`);
+          // Change the status of the time slot to not-available
+          slot.classList.remove('time-slot-available');
+          slot.classList.add('time-slot-not-available');
+          slot.textContent = `${time} - Booked`;
+          slot.setAttribute('data-available', 'false');
+      });
+  });
+
+
 // Function to handle marker click event
 function handleMarkerClick(marker) {
-    console.log("Marker clicked:", marker.title);
-    
-    // Hide all hairdresser info containers
-    const allHairdresserInfo = document.querySelectorAll(".hairdresser-info");
-    allHairdresserInfo.forEach(info => {
-        info.style.display = "none";
-    });
-    
-    // Get the hairdresser info container corresponding to the clicked marker
-    const hairdresserInfo = document.getElementById(`hairdresser-info${marker.title.split(" ")[1]}`);
-    
-    // Display the hairdresser info container
-    hairdresserInfo.style.display = "block";
+  console.log("Marker clicked:", marker.title);
+
+  // Hide all hairdresser info containers
+  const allHairdresserInfo = document.querySelectorAll(".hairdresser-info");
+  allHairdresserInfo.forEach(info => {
+      info.style.display = "none";
+  });
+
+  // Get the hairdresser info container corresponding to the clicked marker
+  const hairdresserInfo = document.getElementById(`hairdresser-info${marker.title.split(" ")[1]}`);
+
+  // Display the hairdresser info container
+  hairdresserInfo.style.display = "block";
 }
 
 initMap();
