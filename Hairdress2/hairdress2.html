@@ -15,7 +15,22 @@
     <div class="map-container">
       <div id="map"></div>
       <!-- 1. haridresser -->
+      
       <div class="hairdresser-info-container">
+
+        <form id="form">
+        <input type="text" name="email" id="email" placeholder="Enter your Email">
+
+       
+          
+            
+            <input type="text" name="booking_time" id="booking_time" placeholder="Time selected">
+         
+            <input type="submit" id="button" value="Send Email" >
+        
+          
+        </form>
+
         <div id="hairdresser-info1" class="hairdresser-info show-info">
           <h2>Barber Shop by Kim</h2>
           <p>Address: 123 Main Street</p>
@@ -27,7 +42,7 @@
             <p><h3>Prices:</h3>
             Dameklip: 150 kr. <br>Herreklip: 130 kr.<br>Børneklip (0-12 år): 100 kr.<!-- Description of the barber --> </p>
            <br>
-           <input type="email" id="email" placeholder="Email">
+          
           <p>Hours: Monday-Saturday 9am-6pm</p>
           <!-- copy-->
           <div class="booking-container">
@@ -294,7 +309,12 @@
 
     <!-- ignore -->
     <!-- email-->
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('Cj5yjqKeDPB_yElp_')
+</script>
 
     <script>
       // Initialize and load Google Maps API
@@ -361,7 +381,7 @@
       slot.addEventListener('click', () => {
           const time = slot.getAttribute('data-time');
           const email = document.getElementById('email').value;
-          const phone = document.getElementById('phone').value;
+          
           
           if (email.trim() === "") {
               alert("Please enter your email before booking a time.");
