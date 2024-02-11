@@ -48,7 +48,7 @@ body {
   /* Styling for the map */
   #map {
     flex: 1; /* Take up remaining space */
-    height: 700px; /* Adjust height as needed */
+    height:862px; /* Adjust height as needed */
 }
   
   /* Flex container for hairdresser info */
