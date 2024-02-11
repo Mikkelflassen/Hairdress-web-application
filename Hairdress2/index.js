@@ -18,7 +18,7 @@ async function initMap() {
 
     // The map, centered in Aarhus
     map = new Map(document.getElementById("map"), {
-        zoom: 15,
+        zoom: 15.5,
         center: position1,
         mapId: "DEMO_MAP_ID",
     });
