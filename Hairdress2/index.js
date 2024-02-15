@@ -18,7 +18,7 @@ async function initMap() {
 
     // The map, centered in Aarhus
     map = new Map(document.getElementById("map"), {
-        zoom: 15,
+        zoom: 15.5,
         center: position1,
         mapId: "DEMO_MAP_ID",
     });
@@ -99,19 +99,50 @@ const marker8 = new google.maps.Marker({
     google.maps.event.addListener(marker8, 'click', () => handleMarkerClick(marker8)); // to add more copy-paste and change the markerNumber
 }
 
-    // Add click event listeners to time slots
-    document.querySelectorAll('.time-slot-available').forEach(slot => {
-      slot.addEventListener('click', () => {
-          const time = slot.getAttribute('data-time');
-          console.log(`Time slot clicked: ${time}`);
-          alert(`Time slot ${time} has been booked.`);
-          // Change the status of the time slot to not-available
-          slot.classList.remove('time-slot-available');
-          slot.classList.add('time-slot-not-available');
-          slot.textContent = `${time} - Booked`;
-          slot.setAttribute('data-available', 'false');
-      });
-  });
+ // Add click event listeners to time slots
+document.querySelectorAll('.time-slot-available').forEach(slot => {
+    slot.addEventListener('click', () => {
+        const time = slot.getAttribute('data-time');
+        const email = document.getElementById('email').value;
+        
+        
+        if (email.trim() === "") {
+            alert("Please enter your email before booking a time.");
+            return; // Prevent booking if email is not provided
+        }
+
+        console.log(`Time slot clicked: ${time}`);
+
+        // Show pop-up message based on email input
+        if (email.trim() === "") {
+            alert("Please enter your email before booking a time.");
+        } else {
+            alert(`Time slot ${time} has been booked.`);
+        }
+        
+      
+
+        // Change the status of the time slot to not-available
+        slot.classList.remove('time-slot-available');
+        slot.classList.add('time-slot-not-available');
+        slot.textContent = `${time} - Booked`;
+        slot.setAttribute('data-available', 'false');
+        slot.style.backgroundColor = 'lightcoral'; // Light red background
+
+        // Send booking details to EmailJS
+        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+            time: time,
+            email: email,
+            phone: phone
+        }).then(function(response) {
+            console.log("Success!", response);
+        }, function(error) {
+            console.log("Failed!", error);
+        });
+    });
+});
+
+
 
 
 // Function to handle marker click event
@@ -133,3 +164,24 @@ function handleMarkerClick(marker) {
 
 initMap();
 
+
+const btn = document.getElementById('button');
+
+document.getElementById('form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   btn.value = 'Sending...';
+
+   const serviceID = 'default_service';
+   const templateID = 'template_i6clavy';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Send Email';
+      alert('Sent!');
+    }, (err) => {
+      btn.value = 'Send Email';
+      alert(JSON.stringify(err));
+    });
+});

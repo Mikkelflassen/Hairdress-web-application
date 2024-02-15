@@ -35,20 +35,47 @@ body {
     background-color: #9ed6fc; /* Light pink background */
 }
 
+#form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the form content horizontally */
+}
+
+#form input[type="email"] {
+  width: 60%; /* Adjust width as needed */
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#form input[type="time1"] {
+  width: 30%; /* Adjust width as needed */
+  margin-bottom: 10px;
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
 
   
 .map-container {
-    display: flex;
-    margin: 40px;
-    position: relative; /* Set position to relative */
-  
+  display: flex;
+  flex-wrap: wrap; /* Allow flex items to wrap to the next line */
 }
+
+@media screen and (max-width: 400px) {
+  .map-container {
+    flex-direction: column; /* Change to column layout */
+  }
+}
+
   
   /* Styling for the map */
   #map {
     flex: 1; /* Take up remaining space */
-    height: 700px; /* Adjust height as needed */
+    height:862px; /* Adjust height as needed */
+    min-width: 100px;
 }
   
   /* Flex container for hairdresser info */
@@ -136,3 +163,10 @@ body {
 }
 
  
+
+footer {
+  background-color: #115785;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}

@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Add Map</title>
+    <title>Local haircut</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
     <link rel="stylesheet" type="text/css" href="./style.css" />
@@ -15,7 +15,22 @@
     <div class="map-container">
       <div id="map"></div>
       <!-- 1. haridresser -->
+      
       <div class="hairdresser-info-container">
+
+        <form id="form">
+        <input type="email" name="email" id="email" placeholder="Enter your Email">
+
+       
+          
+            
+            <input type="time1" name="booking_time" id="booking_time" placeholder="Time selected">
+         
+            <input type="submit" id="button" value="Confirm booking" >
+        
+          
+        </form>
+
         <div id="hairdresser-info1" class="hairdresser-info show-info">
           <h2>Barber Shop by Kim</h2>
           <p>Address: 123 Main Street</p>
@@ -27,6 +42,7 @@
             <p><h3>Prices:</h3>
             Dameklip: 150 kr. <br>Herreklip: 130 kr.<br>Børneklip (0-12 år): 100 kr.<!-- Description of the barber --> </p>
            <br>
+          
           <p>Hours: Monday-Saturday 9am-6pm</p>
           <!-- copy-->
           <div class="booking-container">
@@ -289,8 +305,21 @@
       </div>
     </div>
     
+    <footer>
+      <div class="container">
+        <p>&copy; Frisør organinationen - All rights reserved.</p>
+      </div>
+    </footer>
 
     <!-- ignore -->
+    <!-- email-->
+    <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('Cj5yjqKeDPB_yElp_')
+</script>
+
     <script>
       // Initialize and load Google Maps API
       (g => {
@@ -350,5 +379,42 @@
           v: "weekly"
       });
   </script>
-  </body>
+<script>
+  // Add click event listeners to time slots
+  document.querySelectorAll('.time-slot-available').forEach(slot => {
+      slot.addEventListener('click', () => {
+          const time = slot.getAttribute('data-time');
+          const email = document.getElementById('email').value;
+          
+          
+          if (email.trim() === "") {
+              alert("Please enter your email before booking a time.");
+              return;
+          }
+
+          console.log(`Time slot clicked: ${time}`);
+          alert(`Time slot ${time} has been booked.`);
+          
+          // Set the booking time in the input field
+          document.getElementById('booking_time').value = time;
+          // Change the status of the time slot to not-available
+          slot.classList.remove('time-slot-available');
+          slot.classList.add('time-slot-not-available');
+          slot.textContent = `${time} - Booked`;
+          slot.setAttribute('data-available', 'false');
+          
+          // Send booking details to EmailJS
+          emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+              time: time,
+              email: email,
+              phone: phone
+          }).then(function(response) {
+              console.log("Success!", response);
+          }, function(error) {
+              console.log("Failed!", error);
+          });
+      });
+  });
+</script>
+</body>
 </html>
