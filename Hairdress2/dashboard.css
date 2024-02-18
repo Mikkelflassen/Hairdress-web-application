@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Add your CSS styles here */
+
+/* Header styles */
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Login button styles */
+.login-button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #45a049; /* Darken the button color on hover */
+}
+
+/* Rest of your CSS styles */
+
+
+.hairdresser-info-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hairdresser-info {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 20px;
+    width: 300px;
+}
+
+.booking-container {
+    margin-top: 20px;
+}
+
+.booking-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.time-slot {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+/* Specific styles for unavailable time slots */
+.time-slot-not-available {
+    background-color: #f44336;
+    cursor: not-allowed;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}

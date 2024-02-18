@@ -1,187 +1,158 @@
-// Initialize and add the map
-let map;
+document.addEventListener("DOMContentLoaded", function() {
+  // Function to update status of static time slots
+  function updateStaticTimeslots() {
+      const timeslotsContainer = document.getElementById("booking-slots1").querySelectorAll(".time-slot-available");
+      const bookingData = JSON.parse(localStorage.getItem("bookingData")) || {};
 
-async function initMap() {
-    // The location of of the barber shops
-    const position1 = { lat: 56.159395, lng: 10.209922 };
-    const position2 = { lat: 56.159955, lng: 10.209942 };
-    const position3 = { lat: 56.158915, lng: 10.209322 };
-    const position4 = { lat: 56.158595, lng: 10.206012 };
-    const position5 = { lat: 56.158315, lng: 10.209992 }; 
-    const position6 = { lat: 56.157515, lng: 10.208992 };
-    const position7 = { lat: 56.158515, lng: 10.209892 };
-    const position8 = { lat: 56.157815, lng: 10.208792 };  // to add new ones, make sure to change the (position-number) and cordinates- only change the last 3-4 digit to keep it in aarhus
+      timeslotsContainer.forEach(slot => {
+          const time = slot.getAttribute("data-time");
 
-    // Libraries request
-    const { Map } = await google.maps.importLibrary("maps");
-    // maybe this will be needed - const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+          if (bookingData[time]) {
+              slot.classList.remove("time-slot-available");
+              slot.classList.add("time-slot-not-available");
+              slot.textContent = `${time} - Booked`;
+          } else {
+              slot.classList.remove("time-slot-not-available");
+              slot.classList.add("time-slot-available");
+              slot.textContent = time;
+          }
+      });
+  }
 
-    // The map, centered in Aarhus
-    map = new Map(document.getElementById("map"), {
-        zoom: 15.5,
-        center: position1,
-        mapId: "DEMO_MAP_ID",
-    });
+  // Initial update of static time slots
+  updateStaticTimeslots();
 
-   // Custom colors
-const greenIcon = {
-    url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
-  };
-  const redIcon = {
-    url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
-  };
-  const yellowIcon = {
-    url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png",
-  };
-  
-  // Create more icons
-  const marker1 = new google.maps.Marker({
-    position: position1,
-    map: map,
-    title: "Hairdresser 1",
-    icon: greenIcon,
-  });
-  const marker2 = new google.maps.Marker({
-    position: position2,
-    map: map,
-    title: "Hairdresser 2",
-    icon: redIcon,
-  });
-  const marker3 = new google.maps.Marker({
-    position: position3,
-    map: map,
-    title: "Hairdresser 3",
-    icon: yellowIcon,
-  });
-  const marker4 = new google.maps.Marker({ 
-    position: position4,
-    map: map,
-    title: "Hairdresser 4",
-    icon: greenIcon,
-  });
+  // Event listener for time slot clicks
+  document.querySelectorAll('.time-slot-available').forEach(slot => {
+      slot.addEventListener('click', () => {
+          const time = slot.getAttribute('data-time');
+          const email = document.getElementById('email').value;
 
-  const marker5 = new google.maps.Marker({
-    position: position5,
-    map: map,
-    title: "Hairdresser 5",
-    icon: yellowIcon,
-  });
-  // copy paste this to add more hairdressers
-  
-  const marker6 = new google.maps.Marker({ 
-    position: position6, // change the number here 
-    map: map,
-    title: "Hairdresser 6", //remeber to change the number
-    icon: redIcon, //change this depending on the availability of the shop
-  });
-const marker7 = new google.maps.Marker({
-  position: position7,
-  map: map,
-  title: "Hairdresser 7",
-  icon: redIcon,
-});
-const marker8 = new google.maps.Marker({
-  position: position8,
-  map: map,
-  title: "Hairdresser 8",
-  icon: greenIcon,
-});
-  // add here and change the number and the titel
+          if (email.trim() === "") {
+              alert("Please enter your email before booking a time.");
+              return;
+          }
 
-    // Add click event listener to the markers
-    google.maps.event.addListener(marker1, 'click', () => handleMarkerClick(marker1));
-    google.maps.event.addListener(marker2, 'click', () => handleMarkerClick(marker2));
-    google.maps.event.addListener(marker3, 'click', () => handleMarkerClick(marker3));
-    google.maps.event.addListener(marker4, 'click', () => handleMarkerClick(marker4));
-    google.maps.event.addListener(marker5, 'click', () => handleMarkerClick(marker5));
-    google.maps.event.addListener(marker6, 'click', () => handleMarkerClick(marker6));
-    google.maps.event.addListener(marker7, 'click', () => handleMarkerClick(marker7));
-    google.maps.event.addListener(marker8, 'click', () => handleMarkerClick(marker8)); // to add more copy-paste and change the markerNumber
-}
+          const bookingData = JSON.parse(localStorage.getItem("bookingData")) || {};
 
- // Add click event listeners to time slots
-document.querySelectorAll('.time-slot-available').forEach(slot => {
-    slot.addEventListener('click', () => {
-        const time = slot.getAttribute('data-time');
-        const email = document.getElementById('email').value;
-        
-        
-        if (email.trim() === "") {
-            alert("Please enter your email before booking a time.");
-            return; // Prevent booking if email is not provided
-        }
+          if (!bookingData[time]) {
+              // Book the timeslot
+              bookingData[time] = true;
+          } else {
+              // Unbook the timeslot
+              delete bookingData[time];
+          }
 
-        console.log(`Time slot clicked: ${time}`);
+          // Save booking data to localStorage
+          localStorage.setItem("bookingData", JSON.stringify(bookingData));
 
-        // Show pop-up message based on email input
-        if (email.trim() === "") {
-            alert("Please enter your email before booking a time.");
-        } else {
-            alert(`Time slot ${time} has been booked.`);
-        }
-        
-      
+          // Update status of static time slots
+          updateStaticTimeslots();
 
-        // Change the status of the time slot to not-available
-        slot.classList.remove('time-slot-available');
-        slot.classList.add('time-slot-not-available');
-        slot.textContent = `${time} - Booked`;
-        slot.setAttribute('data-available', 'false');
-        slot.style.backgroundColor = 'lightcoral'; // Light red background
+          // Set the booking time in the input field
+          document.getElementById("booking_time").value = time;
 
-        // Send booking details to EmailJS
-        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-            time: time,
-            email: email,
-            phone: phone
-        }).then(function(response) {
-            console.log("Success!", response);
-        }, function(error) {
-            console.log("Failed!", error);
-        });
-    });
-});
+          // Send booking details to EmailJS
+          emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+              time: time,
+              email: email
+          }).then(function(response) {
+              console.log("Success!", response);
+          }, function(error) {
+              console.log("Failed!", error);
+          });
 
-
-
-
-// Function to handle marker click event
-function handleMarkerClick(marker) {
-  console.log("Marker clicked:", marker.title);
-
-  // Hide all hairdresser info containers
-  const allHairdresserInfo = document.querySelectorAll(".hairdresser-info");
-  allHairdresserInfo.forEach(info => {
-      info.style.display = "none";
+          alert(`Time slot ${time} has been booked.`);
+      });
   });
 
-  // Get the hairdresser info container corresponding to the clicked marker
-  const hairdresserInfo = document.getElementById(`hairdresser-info${marker.title.split(" ")[1]}`);
+  // Initialize and add the map
+  let map;
 
-  // Display the hairdresser info container
-  hairdresserInfo.style.display = "block";
-}
+  async function initMap() {
+      // The location of the barber shops
+      const position1 = { lat: 56.159395, lng: 10.209922 };
+      const position2 = { lat: 56.159955, lng: 10.209942 };
+      const position3 = { lat: 56.158915, lng: 10.209322 };
+      const position4 = { lat: 56.158595, lng: 10.206012 };
+      const position5 = { lat: 56.158315, lng: 10.209992 };
+      const position6 = { lat: 56.157515, lng: 10.208992 };
+      const position7 = { lat: 56.158515, lng: 10.209892 };
+      const position8 = { lat: 56.157815, lng: 10.208792 };
 
-initMap();
+      // Libraries request
+      const { Map } = await google.maps.importLibrary("maps");
 
+      // The map, centered in Aarhus
+      map = new Map(document.getElementById("map"), {
+          zoom: 15.5,
+          center: position1,
+          mapId: "DEMO_MAP_ID",
+      });
 
-const btn = document.getElementById('button');
+      // Custom colors
+      const greenIcon = { url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png" };
+      const redIcon = { url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png" };
+      const yellowIcon = { url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" };
 
-document.getElementById('form')
- .addEventListener('submit', function(event) {
-   event.preventDefault();
+      // Create more icons
+      const marker1 = new google.maps.Marker({ position: position1, map: map, title: "Hairdresser 1", icon: greenIcon });
+      const marker2 = new google.maps.Marker({ position: position2, map: map, title: "Hairdresser 2", icon: redIcon });
+      const marker3 = new google.maps.Marker({ position: position3, map: map, title: "Hairdresser 3", icon: yellowIcon });
+      const marker4 = new google.maps.Marker({ position: position4, map: map, title: "Hairdresser 4", icon: greenIcon });
+      const marker5 = new google.maps.Marker({ position: position5, map: map, title: "Hairdresser 5", icon: yellowIcon });
+      const marker6 = new google.maps.Marker({ position: position6, map: map, title: "Hairdresser 6", icon: redIcon });
+      const marker7 = new google.maps.Marker({ position: position7, map: map, title: "Hairdresser 7", icon: redIcon });
+      const marker8 = new google.maps.Marker({ position: position8, map: map, title: "Hairdresser 8", icon: greenIcon });
 
-   btn.value = 'Sending...';
+      // Add click event listener to the markers
+      google.maps.event.addListener(marker1, 'click', () => handleMarkerClick(marker1));
+      google.maps.event.addListener(marker2, 'click', () => handleMarkerClick(marker2));
+      google.maps.event.addListener(marker3, 'click', () => handleMarkerClick(marker3));
+      google.maps.event.addListener(marker4, 'click', () => handleMarkerClick(marker4));
+      google.maps.event.addListener(marker5, 'click', () => handleMarkerClick(marker5));
+      google.maps.event.addListener(marker6, 'click', () => handleMarkerClick(marker6));
+      google.maps.event.addListener(marker7, 'click', () => handleMarkerClick(marker7));
+      google.maps.event.addListener(marker8, 'click', () => handleMarkerClick(marker8));
+  }
 
-   const serviceID = 'default_service';
-   const templateID = 'template_i6clavy';
+  // Function to handle marker click event
+  function handleMarkerClick(marker) {
+      console.log("Marker clicked:", marker.title);
 
-   emailjs.sendForm(serviceID, templateID, this)
-    .then(() => {
-      btn.value = 'Send Email';
-      alert('Sent!');
-    }, (err) => {
-      btn.value = 'Send Email';
-      alert(JSON.stringify(err));
-    });
+      // Hide all hairdresser info containers
+      const allHairdresserInfo = document.querySelectorAll(".hairdresser-info");
+      allHairdresserInfo.forEach(info => {
+          info.style.display = "none";
+      });
+
+      // Get the hairdresser info container corresponding to the clicked marker
+      const hairdresserInfo = document.getElementById(`hairdresser-info${marker.title.split(" ")[1]}`);
+
+      // Display the hairdresser info container
+      hairdresserInfo.style.display = "block";
+  }
+
+  initMap();
+
+  const btn = document.getElementById('button');
+
+  document.getElementById('form')
+      .addEventListener('submit', function(event) {
+          event.preventDefault();
+
+          btn.value = 'Sending...';
+
+          const serviceID = 'default_service';
+          const templateID = 'template_i6clavy';
+
+          emailjs.sendForm(serviceID, templateID, this)
+              .then(() => {
+                  btn.value = 'Send Email';
+                  alert('Sent!');
+              }, (err) => {
+                  btn.value = 'Send Email';
+                  alert(JSON.stringify(err));
+              });
+      });
 });
