@@ -47,15 +47,22 @@ body {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: rgb(28, 151, 233); /* Change the background color */
+}
+
+#form input[type="email"]::placeholder {
+  color: #e2e2e2; /* Change the placeholder color */
 }
 
 #form input[type="time1"] {
-  width: 30%; /* Adjust width as needed */
+  width: 9%; /* Adjust width as needed */
   margin-bottom: 10px;
   padding: 3px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: rgb(28, 151, 233); /* Change the background color */
 }
+
 
 
   
@@ -74,7 +81,7 @@ body {
   /* Styling for the map */
   #map {
     flex: 1; /* Take up remaining space */
-    height:862px; /* Adjust height as needed */
+    height:982px; /* Adjust height as needed */
     min-width: 100px;
 }
   
