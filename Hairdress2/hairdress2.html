@@ -8,28 +8,28 @@
     
   </head>
   <body>
-    <div class="header">
-      <h1>Find your next haircut</h1>
-    </div>
+    <div class="container">
+      <div class="header">
+          <h1>Find your next haircut</h1>
+      </div>
+      
+  </div>
     <!--The div element for the map -->
     <div class="map-container">
-      <div id="map"></div>
+      
+      <div id="map">
+        
+        
+      </div>
+      
+      
+      
+      
       <!-- 1. haridresser -->
       
       <div class="hairdresser-info-container">
 
-        <form id="form">
-        <input type="email" name="email" id="email" placeholder="Enter your Email">
-
-       
-          
-            
-            <input type="time1" name="booking_time" id="booking_time" placeholder="__:__" >
-         
-            <input type="submit" id="button" value="Confirm booking" >
         
-          
-        </form>
 
         <div id="hairdresser-info1" class="hairdresser-info show-info">
           <h2>Barber Shop by Kim</h2>
@@ -42,7 +42,7 @@
         
             <p><h3>Prices:</h3>
             Dameklip: 150 kr. <br>Herreklip: 130 kr.<br>Børneklip (0-12 år): 100 kr.<!-- Description of the barber --> </p>
-           <br>
+           
           
           <p>Hours: Monday-Saturday 9am-6pm</p>
           <!-- copy-->
@@ -69,13 +69,26 @@
   <button class="time-slot-not-available" data-time="17:30">17:30</button>
               
             </div>
+            
           </div>
           <div class="navigation">
             <button id="prevDay">Previous Day</button>
             <button id="nextDay">Next Day</button>
         </div>
+        <form id="form">
+          <input type="email" name="email" id="email" placeholder="Enter your Email">
+          <input type="time1" name="booking_time" id="booking_time" placeholder="__:__">
+          <input type="submit" id="button" value="Confirm booking">
+      </form>
+        
+        
+        
           <!-- End  -->
         </div>
+        
+      </div>
+        
+        
     
         <div id="hairdresser-info2" class="hairdresser-info">
           <h2>Hair by Jasmin</h2>
@@ -305,11 +318,14 @@
                 
               </div>
             </div>
+            
           </div>
           
       </div>
+      
     </div>
     
+
     <footer>
       <div class="container">
         <p>&copy; Frisør organinationen - All rights reserved.</p>

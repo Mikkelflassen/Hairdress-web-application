@@ -1,71 +1,72 @@
-/* 
- * Always set the map height explicitly to define the size of the div element
- * that contains the map. 
- 
-
-
 /* Styling for the header */
 .header {
-    background-color: #3498db; /* Light blue background */
-    padding: 20px; /* Add some padding around the header text */
-    text-align: center; /* Center-align the header text */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    border-bottom: 7px solid #2980b9; /* Darker blue bottom border */
-    margin-bottom: 20px; /* Add some space below the header */
-    border-radius: 10px; /* Add rounded corners */
-    color: #fff; /* Text color */
-    transition: background-color 4s ease-out; /* Transition effect for background color */
+  background-color: #8B4513; /* Brown background */
+  padding: 20px; /* Add some padding around the header text */
+  text-align: center; /* Center-align the header text */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  border-bottom: 7px solid #654321; /* Darker brown bottom border */
+  margin-bottom: 20px; /* Add some space below the header */
+  border-radius: 10px; /* Add rounded corners */
+  color: #fff; /* Text color */
+  transition: background-color 4s ease-out; /* Transition effect for background color */
 }
 
 .header:hover {
-    background-color: #2980b9; /* Darker blue on hover */
-    cursor: pointer; /* Show pointer cursor on hover */
+  background-color: #654321; /* Darker brown on hover */
+  cursor: pointer; /* Show pointer cursor on hover */
 }
 
 .header h1 {
-    margin: 0; /* Remove default margin */
-    font-size: 32px; /* Increase font size */
-    font-weight: bold; /* Make the text bold */
-    text-transform: uppercase; /* Convert text to uppercase */
-    letter-spacing: 2px; /* Add letter spacing */
+  margin: 0; /* Remove default margin */
+  font-size: 32px; /* Increase font size */
+  font-weight: bold; /* Make the text bold */
+  text-transform: uppercase; /* Convert text to uppercase */
+  letter-spacing: 2px; /* Add letter spacing */
 }
 
 /* Styling for the body */
 body {
-    background-color: #9ed6fc; /* Light pink background */
+  background-color: #D2B48C; /* Light brown background */
 }
 
+/* Styling for the form */
 #form {
   display: flex;
   flex-direction: column;
   align-items: center; /* Center the form content horizontally */
+  margin-top: 20px;
 }
 
-#form input[type="email"] {
+#form input[type="email"],
+#form input[type="time1"] {
   width: 60%; /* Adjust width as needed */
   margin-bottom: 10px;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #8B4513; /* Brown border */
   border-radius: 5px;
-  background-color: rgb(28, 151, 233); /* Change the background color */
+  background-color: #CD853F; /* Brown background */
 }
 
-#form input[type="email"]::placeholder {
-  color: #e2e2e2; /* Change the placeholder color */
+#form input[type="email"]::placeholder,
+#form input[type="time1"]::placeholder {
+  color: #D2B48C; /* Light brown placeholder color */
 }
 
-#form input[type="time1"] {
-  width: 9%; /* Adjust width as needed */
-  margin-bottom: 10px;
-  padding: 3px;
-  border: 1px solid #ccc;
+#form input[type="submit"] {
+  margin: 10px;
+  background-color: #8B4513; /* Brown background */
+  color: #fff; /* Text color */
+  border: none;
   border-radius: 5px;
-  background-color: rgb(28, 151, 233); /* Change the background color */
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
+#form input[type="submit"]:hover {
+  background-color: #654321; /* Darker brown on hover */
+}
 
-
-  
+/* Styling for the map container */
 .map-container {
   display: flex;
   flex-wrap: wrap; /* Allow flex items to wrap to the next line */
@@ -73,53 +74,48 @@ body {
 
 @media screen and (max-width: 400px) {
   .map-container {
-    flex-direction: column; /* Change to column layout */
+      flex-direction: column; /* Change to column layout */
   }
-  
 }
 
-  
-  /* Styling for the map */
-  #map {
-    flex: 1; /* Take up remaining space */
-    height:982px; /* Adjust height as needed */
-    min-width: 100px;
+/* Styling for the map */
+#map {
+  flex: 1; /* Take up remaining space */
+  height: 882px; /* Adjust height as needed */
+  min-width: 100px;
 }
-  
-  /* Flex container for hairdresser info */
-  .hairdresser-info-container {
-    display: flex;
-    flex-direction: column; /* Stack hairdresser info vertically */
-    top: 20px; /* Adjust position from top */
-    right: 20px; /* Adjust position from right */
-    padding: 20px; /* Add padding */
-    
-   
-    border-radius: 10px; /* Add rounded corners */
-    
+
+/* Flex container for hairdresser info */
+.hairdresser-info-container {
+  display: flex;
+  flex-direction: column; /* Stack hairdresser info vertically */
+  top: 20px; /* Adjust position from top */
+  right: 20px; /* Adjust position from right */
+  padding: 10px; /* Add padding */
+  border-radius: 10px; /* Add rounded corners */
 }
-  
-  /* Styling for each hairdresser info */
-  .hairdresser-info {
-    margin-bottom: 20px; /* Add margin between hairdresser info */
-    max-width: 400px; /* Set maximum width */
-    border: 3px solid #2980b9;
-    padding: 40px; /* Increase padding for more space */
-    border-radius: 10px; /* Add rounded corners */
-    background-color: rgba(71, 180, 252, 0.5); /* Less transparent background */
-    font-size: 18px; /* Increase font size */
-}
-  
-  /* CSS */
+
+/* Styling for each hairdresser info */
 .hairdresser-info {
-    display: none; /* Initially hide the hairdresser info */
-    
+  margin-bottom: 10px; /* Add margin between hairdresser info */
+  max-width: 500px; /* Set maximum width */
+  border: 3px solid #8B4513; /* Brown border */
+  padding: 10px; /* Increase padding for more space */
+  border-radius: 10px; /* Add rounded corners */
+  background-color: rgba(139, 69, 19, 0.5); /* Less transparent brown background */
+  font-size: 15px; /* Increase font size */
+}
+
+/* CSS */
+.hairdresser-info {
+  display: none; /* Initially hide the hairdresser info */
 }
 
 .show-info {
-    display: block; /* Show the hairdresser info when the class is present */
-    
+  display: block; /* Show the hairdresser info when the class is present */
 }
+
+/* Styling for the booking container */
 .booking-container {
   display: flex;
   flex-direction: column;
@@ -129,15 +125,16 @@ body {
   margin-bottom: 10px; /* Add some space between heading and time slots */
 }
 
+/* Styling for the navigation buttons */
 .navigation {
   display: flex;
   justify-content: center; /* Center the buttons horizontally */
-  margin-top: 10px; /* Add some space between time slots and navigation */
+  margin-top: 20px; /* Add some space between time slots and navigation */
 }
 
 .navigation button {
-  background-color: #4caf50;
-  color: #fff;
+  background-color: #8B4513; /* Brown background */
+  color: #fff; /* Text color */
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -151,35 +148,24 @@ body {
 }
 
 .navigation button:hover {
-  background-color: #45a049;
+  background-color: #654321; /* Darker brown on hover */
 }
 
-
-  
-
-/* booking times */
-
+/* Styling for the booking times */
 .booking-container {
   margin-top: 30px;
-  
-}
-
-.booking-container h3 {
-  margin-bottom: 10px;
-  font-size: 18px;
 }
 
 .booking-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-gap: 20px;
-  
 }
 
 .time-slot-available {
-  background-color: hsl(122, 80%, 67%);
-  color: #1f1f1f;
-  border: solid 1px;
+  background-color: #4CAF50; /* Green background */
+  color: #fff; /* Text color */
+  border: solid 1px #8B4513; /* Brown border */
   padding: 5px 10px;
   font-size: 13px;
   cursor: pointer;
@@ -187,7 +173,7 @@ body {
 }
 
 .time-slot-not-available {
-  background-color: #f66d63;
+  background-color: #F44336; /* Red background */
   color: #0e0e0e;
   border: solid 1px;
   padding: 5px 10px;
@@ -196,18 +182,17 @@ body {
 }
 
 .time-slot-available:hover {
-  background-color: rgb(9, 247, 21);
+  background-color: #45A049; /* Darker green on hover */
 }
 
 .time-slot-not-available:hover {
-  background-color: #f44336;
+  background-color: #F44336;
 }
 
- 
-
+/* Styling for the footer */
 footer {
-  background-color: #115785;
-  color: #fff;
+  background-color: #8B4513; /* Brown background */
+  color: #fff; /* Text color */
   text-align: center;
   padding: 20px 0;
 }

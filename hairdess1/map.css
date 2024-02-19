@@ -29,19 +29,31 @@ body {
   background-color: #9ed6fc; /* Light pink background */
 }
 
-/* Styling for the map container */
-.map-container {
+/* Styling for the main container */
+.main-container {
   display: flex;
-  margin: 40px;
-  position: relative; /* Set position to relative */
 }
 
-/* Styling for the map */
-#map {
+/* Styling for the map container */
+.map-container {
   flex: 1; /* Take up remaining space */
-  height: 460px; /* Adjust height as needed */
-  z-index: 1; /* Ensure map is above other content */
+  display: flex;
+  flex-direction: column; /* Stack map and form vertically */
 }
+
+/* Styling for the form container */
+.form-container {
+  margin-top: 20px;
+}
+
+/* Styling for the information section */
+.information-section {
+  flex: 1; /* Take up remaining space */
+  margin-left: 20px; /* Add some space between the map and information */
+}
+
+/* Add any additional styling for the information section as needed */
+
 
 /* Flex container for hairdresser info */
 .hairdresser-info-container {
@@ -122,3 +134,4 @@ body {
 .time-slot-available.booked {
   background-color: red;
 }
+
