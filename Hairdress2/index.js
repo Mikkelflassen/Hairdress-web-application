@@ -1,23 +1,31 @@
+// Wait for the DOM content to be fully loaded before executing JavaScript
 document.addEventListener("DOMContentLoaded", function() {
-  // Function to update status of static time slots
-  function updateStaticTimeslots() {
-      const timeslotsContainer = document.getElementById("booking-slots1").querySelectorAll(".time-slot-available");
-      const bookingData = JSON.parse(localStorage.getItem("bookingData")) || {};
+    // Function to update status of static time slots
+    function updateStaticTimeslots() {
+        // Get the container for static time slots
+        const timeslotsContainer = document.getElementById("booking-slots1").querySelectorAll(".time-slot-available");
+        // Retrieve booking data from localStorage or initialize if not exists
+        const bookingData = JSON.parse(localStorage.getItem("bookingData")) || {};
 
-      timeslotsContainer.forEach(slot => {
-          const time = slot.getAttribute("data-time");
+        // Loop through each static time slot
+        timeslotsContainer.forEach(slot => {
+            // Get the time of the time slot
+            const time = slot.getAttribute("data-time");
 
-          if (bookingData[time]) {
-              slot.classList.remove("time-slot-available");
-              slot.classList.add("time-slot-not-available");
-              slot.textContent = `${time} - Booked`;
-          } else {
-              slot.classList.remove("time-slot-not-available");
-              slot.classList.add("time-slot-available");
-              slot.textContent = time;
-          }
-      });
-  }
+            // Check if the time slot is booked
+            if (bookingData[time]) {
+                // Update class and content for booked time slot
+                slot.classList.remove("time-slot-available");
+                slot.classList.add("time-slot-not-available");
+                slot.textContent = `${time} - Booked`;
+            } else {
+                // Update class and content for available time slot
+                slot.classList.remove("time-slot-not-available");
+                slot.classList.add("time-slot-available");
+                slot.textContent = time;
+            }
+        });
+    }
 
   // Initial update of static time slots
   updateStaticTimeslots();

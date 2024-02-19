@@ -75,6 +75,7 @@ body {
   .map-container {
     flex-direction: column; /* Change to column layout */
   }
+  
 }
 
   
@@ -119,14 +120,47 @@ body {
     display: block; /* Show the hairdresser info when the class is present */
     
 }
+.booking-container {
+  display: flex;
+  flex-direction: column;
+}
 
-  
+.booking-container h3 {
+  margin-bottom: 10px; /* Add some space between heading and time slots */
+}
+
+.navigation {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  margin-top: 10px; /* Add some space between time slots and navigation */
+}
+
+.navigation button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+.navigation button:last-child {
+  margin-right: 0; /* Remove margin from the last button */
+}
+
+.navigation button:hover {
+  background-color: #45a049;
+}
+
+
   
 
 /* booking times */
 
 .booking-container {
-  margin-top: 20px;
+  margin-top: 30px;
   
 }
 
