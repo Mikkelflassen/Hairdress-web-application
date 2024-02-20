@@ -97,8 +97,7 @@ body {
   min-width: 100px;
   margin: 10px;
 }
-
-/* Flex container for hairdresser info */
+/* Styling for the hairdresser info container */
 .hairdresser-info-container {
   display: flex;
   flex-direction: column; /* Stack hairdresser info vertically */
@@ -107,6 +106,66 @@ body {
   padding: 10px; /* Add padding */
   border-radius: 10px; /* Add rounded corners */
 }
+
+/* Styling for the student discount icon */
+.student-discount-icon {
+  position: absolute; /* Position the icon relative to the container */
+  top: 150px; /* Adjust position from top */
+  right: 25px; /* Adjust position from right */
+  cursor: pointer;
+  width: 30px; /* Set width */
+  height: 30px; /* Set height */
+  border: 2px solid #654321; /* Dark brown border */
+  border-radius: 50%; /* Make it circular */
+  font-size: 18px; /* Set font size */
+  line-height: 26px; /* Adjust for vertical centering */
+  text-align: center; /* Center text horizontally */
+  color: #654321; /* Dark brown color */
+}
+
+/* Styling for the student discount tooltip */
+
+.student-discount-tooltip {
+  position: absolute; /* Position the tooltip relative to the container */
+  bottom: 100%; /* Position above the container */
+  left: 50%; /* Position at the center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  background-color: #fff; /* White background */
+  color: #654321; /* Dark brown color */
+  padding: 5px 10px; /* Add padding */
+  border: 2px solid #654321; /* Dark brown border */
+  border-radius: 5px; /* Add rounded corners */
+  font-size: 12px; /* Set font size */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease; /* Add transition effect */
+}
+.student-discount-icon:hover::before {
+  content: "Student Discount Available"; /* Message to display */
+  position: absolute; /* Position the message relative to the icon */
+  bottom: 100%; /* Position above the icon */
+  left: 50%; /* Position at the center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  background-color: #f2ac79; /* White background */
+  color: #583410; /* Dark brown color */
+  padding: 5px 10px; /* Add padding */
+  border: 2px solid #654321; /* Dark brown border */
+  border-radius: 5px; /* Add rounded corners */
+  font-size: 12px; /* Set font size */
+  opacity: 1; /* Show the message */
+  transition: opacity 0.3s ease; /* Add transition effect */
+}
+
+@media screen and (max-width: 680px) {
+  .student-discount-icon {
+    display: none;
+  }
+}
+
+/* Show tooltip on hover */
+.hairdresser-info-container:hover .student-discount-tooltip {
+  opacity: 1; /* Show tooltip on hover */
+}
+
 
 /* Styling for each hairdresser info */
 .hairdresser-info {

@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "15:00", "15:30",
         "16:30", "17:00"
     ];
+
     const unavailableTimeslots = [
         "13:00",
         "14:00",
