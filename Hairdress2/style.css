@@ -1,33 +1,45 @@
-/* Styling for the header */
 .header {
-  background-color: #8B4513; /* Brown background */
+  background: linear-gradient(135deg, #72320e, #5e2b16); /* Gradient background */
   padding: 20px; /* Add some padding around the header text */
   text-align: center; /* Center-align the header text */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-  border-bottom: 7px solid #654321; /* Darker brown bottom border */
-  margin-bottom: 20px; /* Add some space below the header */
+  border-bottom: 7px solid #4a1904; /* Adjusted darker brown bottom border */
+  margin: 20px; /* Add some space below the header */
   border-radius: 10px; /* Add rounded corners */
-  color: #fff; /* Text color */
-  transition: background-color 4s ease-out; /* Transition effect for background color */
+  color: #fcd4b8; /* Text color */
+  transition: background-color 0.4s ease; /* Transition effect for background color */
+  font-family: 'Open Sans', sans-serif; /* Custom font */
 }
 
 .header:hover {
-  background-color: #654321; /* Darker brown on hover */
-  cursor: pointer; /* Show pointer cursor on hover */
+  background: linear-gradient(135deg, #934625, #79330b); /* Reverse gradient on hover */
 }
 
 .header h1 {
+  font-size: 36px; /* Increase font size */
   margin: 0; /* Remove default margin */
-  font-size: 32px; /* Increase font size */
-  font-weight: bold; /* Make the text bold */
   text-transform: uppercase; /* Convert text to uppercase */
   letter-spacing: 2px; /* Add letter spacing */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Text shadow for depth */
 }
+
+
 
 /* Styling for the body */
 body {
-  background-color: #D2B48C; /* Light brown background */
+  background-color: #3b1c0d; /* Dark brown background color */
+  background-image:
+      /* Burnt wood pattern */
+      linear-gradient(65deg, #3b1c0d 5%, transparent 5%, transparent 75%, #3b1c0d 75%, #3b1c0d),
+      linear-gradient(25deg, #3b1c0d 5%, transparent 5%, transparent 75%, #3b1c0d 75%, #3b1c0d),
+      radial-gradient(circle at top left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.5) 100%),
+      radial-gradient(circle at bottom right, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.5) 100%);
+  background-size: cover; /* Cover the entire screen */
+  background-blend-mode: overlay;
+  margin: 0; /* Remove default body margin */
+  height: 100vh; /* Set body height to viewport height */
 }
+
 
 /* Styling for the form */
 #form {
@@ -49,13 +61,13 @@ body {
 
 #form input[type="email"]::placeholder,
 #form input[type="time1"]::placeholder {
-  color: #D2B48C; /* Light brown placeholder color */
+  color: #fcd4b8; /* Light brown placeholder color */
 }
 
 #form input[type="submit"] {
   margin: 10px;
   background-color: #8B4513; /* Brown background */
-  color: #fff; /* Text color */
+  color: #fcd4b8; /* Text color */
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -63,7 +75,7 @@ body {
 }
 
 #form input[type="submit"]:hover {
-  background-color: #654321; /* Darker brown on hover */
+  background-color: #9d6731; /* Darker brown on hover */
 }
 
 /* Styling for the map container */
@@ -81,8 +93,9 @@ body {
 /* Styling for the map */
 #map {
   flex: 1; /* Take up remaining space */
-  height: 882px; /* Adjust height as needed */
+  height: 908px; /* Adjust height as needed */
   min-width: 100px;
+  margin: 10px;
 }
 
 /* Flex container for hairdresser info */
@@ -104,7 +117,21 @@ body {
   border-radius: 10px; /* Add rounded corners */
   background-color: rgba(139, 69, 19, 0.5); /* Less transparent brown background */
   font-size: 15px; /* Increase font size */
+  color: wheat;
 }
+
+#disclaimer{
+  display: flex;
+    justify-content: center; /* Horizontally center content */
+    text-align: center; /* Horizontally center text */
+    
+  font-size: 12px;
+  color: #8B4513;
+  margin-top: -30px;
+ margin-left: 110px;
+ margin-right: 110px;
+}
+
 
 /* CSS */
 .hairdresser-info {
@@ -129,27 +156,36 @@ body {
 .navigation {
   display: flex;
   justify-content: center; /* Center the buttons horizontally */
+  align-items: center; /* Center the buttons vertically */
   margin-top: 20px; /* Add some space between time slots and navigation */
 }
 
+
+
 .navigation button {
   background-color: #8B4513; /* Brown background */
-  color: #fff; /* Text color */
+  color: #fcd4b8; /* Text color */
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-right: 10px;
+  width: 145px; /* Fixed width for both buttons */
+  text-align: center; /* Center the text horizontally */
+}
+
+.navigation button:first-child {
+  margin-right: 5px; /* Add margin to separate buttons */
 }
 
 .navigation button:last-child {
-  margin-right: 0; /* Remove margin from the last button */
+  margin-left: 5px; /* Add margin to separate buttons */
 }
 
 .navigation button:hover {
-  background-color: #654321; /* Darker brown on hover */
+  background-color: #a26d38; /* Darker brown on hover */
 }
+
 
 /* Styling for the booking times */
 .booking-container {
@@ -164,7 +200,7 @@ body {
 
 .time-slot-available {
   background-color: #4CAF50; /* Green background */
-  color: #fff; /* Text color */
+  color: #fcd4b8; /* Text color */
   border: solid 1px #8B4513; /* Brown border */
   padding: 5px 10px;
   font-size: 13px;
@@ -174,7 +210,7 @@ body {
 
 .time-slot-not-available {
   background-color: #F44336; /* Red background */
-  color: #0e0e0e;
+  color: #fcd4b8;
   border: solid 1px;
   padding: 5px 10px;
   font-size: 13px;
@@ -191,8 +227,8 @@ body {
 
 /* Styling for the footer */
 footer {
-  background-color: #8B4513; /* Brown background */
-  color: #fff; /* Text color */
+  background-color: #572807; /* Brown background */
+  color: #e5a679; /* Text color */
   text-align: center;
   padding: 20px 0;
 }
