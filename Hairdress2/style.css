@@ -1,14 +1,22 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+
 .header {
+  position: relative;
   background: linear-gradient(135deg, #72320e, #5e2b16); /* Gradient background */
   padding: 20px; /* Add some padding around the header text */
   text-align: center; /* Center-align the header text */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
   border-bottom: 7px solid #4a1904; /* Adjusted darker brown bottom border */
-  margin: 20px; /* Add some space below the header */
   border-radius: 10px; /* Add rounded corners */
   color: #fcd4b8; /* Text color */
   transition: background-color 0.4s ease; /* Transition effect for background color */
   font-family: 'Open Sans', sans-serif; /* Custom font */
+  flex-grow: 1;
 }
 
 .header:hover {
@@ -21,8 +29,29 @@
   text-transform: uppercase; /* Convert text to uppercase */
   letter-spacing: 2px; /* Add letter spacing */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Text shadow for depth */
+  display: inline-block; /* Ensure inline display */
 }
 
+.lang-button {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.lang-button img {
+  width: 20px; /* Adjust the size of the flag icon as needed */
+  height: auto;
+  margin-right: 5px;
+}
 
 
 /* Styling for the body */
@@ -93,7 +122,7 @@ body {
 /* Styling for the map */
 #map {
   flex: 1; /* Take up remaining space */
-  height: 908px; /* Adjust height as needed */
+  height: 900px; /* Adjust height as needed */
   min-width: 100px;
   margin: 10px;
 }
@@ -291,3 +320,4 @@ footer {
   text-align: center;
   padding: 20px 0;
 }
+
