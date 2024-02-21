@@ -1,7 +1,8 @@
-/* Set default font family for the entire page */
 body {
     font-family: Arial, sans-serif;
 }
+
+/* Add your CSS styles here */
 
 /* Header styles */
 .header {
@@ -13,31 +14,70 @@ body {
 
 /* Login button styles */
 .login-button {
-    background-color: #4caf50; /* Green */
-    color: #fff; /* color text */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px 20px; /* Padding for button */
-    cursor: pointer; /* Show pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth transition for background color change */
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* Hover effect for login button */
 .login-button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049; /* Darken the button color on hover */
 }
 
-/* Container styles for hairdresser information */
+/* Rest of your CSS styles */
+
+
 .hairdresser-info-container {
-    display: flex; /* Display as a flex container */
-    flex-wrap: wrap; /* Wrap items to next row if needed */
-    justify-content: center; /* Center items horizontally */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-/* Styles for individual hairdresser information */
 .hairdresser-info {
-    background-color: #f9f9f9; /* Light gray background */
-    border: 1px solid #ddd; /* Light gray border */
-    border-radius: 5px; /* Rounded corners */
-    margin: 20px
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 20px;
+    width: 300px;
+}
+
+.booking-container {
+    margin-top: 20px;
+}
+
+.booking-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.time-slot {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+/* Specific styles for unavailable time slots */
+.time-slot-not-available {
+    background-color: #f44336;
+    cursor: not-allowed;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
 }
