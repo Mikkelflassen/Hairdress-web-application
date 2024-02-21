@@ -37,9 +37,9 @@
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
+  padding: 5px 10px;
+  background-color: #501f03;
+ 
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -48,9 +48,9 @@
 }
 
 .lang-button img {
-  width: 20px; /* Adjust the size of the flag icon as needed */
+  width:70px; /* Adjust the size of the flag icon as needed */
   height: auto;
-  margin-right: 5px;
+  margin-right: 0px;
 }
 
 
