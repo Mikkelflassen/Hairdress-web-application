@@ -20,7 +20,7 @@
 }
 
 .header:hover {
-  background: linear-gradient(135deg, #934625, #79330b); /* Reverse gradient on hover */
+  background: linear-gradient(135deg, #934625, #6f2e09); /* Reverse gradient on hover */
 }
 
 .header h1 {
