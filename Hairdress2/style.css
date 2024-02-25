@@ -12,7 +12,7 @@
   text-align: center; /* Center-align the header text */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
   border-bottom: 7px solid #4a1904; /* Adjusted darker brown bottom border */
-  border-radius: 10px; /* Add rounded corners */
+  border-radius: 9px; /* Add rounded corners */
   color: #fcd4b8; /* Text color */
   transition: background-color 0.4s ease; /* Transition effect for background color */
   font-family: 'Open Sans', sans-serif; /* Custom font */
